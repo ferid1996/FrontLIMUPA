@@ -1,0 +1,31 @@
+﻿
+
+@model Blog
+
+<form method="post" asp-area="Admin" asp-controller="Blog" asp-action="Edit" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input asp-for=@Model.Title  type="text" class="form-control" id="name"  placeholder="Category name">
+     <span asp-validation-for=@Model.Title class="text-danger"></span>
+  </div> 
+    
+  <div class="form-group">   
+    <label for="description">Product About</label> 
+    <textarea asp-for=@Model.Description class="form-control" id="description"  rows="3"></textarea>
+     <span asp-validation-for=@Model.Description class="text-danger"></span>
+  </div> 
+  <div class="form-group">
+        <label for="image">Image</label>
+        <input asp-for=@Model.Upload type="file" id="image"  />
+         <span asp-validation-for=@Model.Upload class="text-danger"></span>
+  </div>
+  
+   <div class="form-group">
+    <label for="status">Select status</label>
+    <select asp-for=@Model.Status class="form-control" id="status" >
+      <option value="True" style="font:20px;">Aktiv</option>
+      <option value="False" style="font:20px;">Aktiv deyil</option>     
+    </select>
+  </div>
+  <button class="btn btn-primary">Send</button>
+</form>

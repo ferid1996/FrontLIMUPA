@@ -1,0 +1,48 @@
+﻿@model List<User>
+@{
+   ViewData["Title"] = "Informations";
+}
+
+<h1>ADMINS</h1>
+<h4>Admin for add find user and change</h4>
+
+<form method="get" asp-area="Admin" asp-controller="Home" asp-action="SearchUser" class="hm-searchbox">
+                                 
+                                    <input for=user type="text" placeholder="Search User...">
+                                    <span for=user class="text-danger"></span>
+                                    <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+ </form>
+
+   <section>
+        <div>
+  <table class="table" >
+  <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Names</th>
+        <th scope="col">E-mail</th>
+       
+        <th scope="col">Status</th>
+    </tr>
+   </thead>
+   <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+      <th scope="row">@item.Id</th>
+      <td  >@item.Username</td>
+      <td>@item.Email</td>
+      @if (item.UserTypeId == 2)
+       {
+        <td style="color:green;">Admin</td>
+       }
+       else
+      {
+       <td>Istifadeci</td>
+      }                 
+       </tr>
+}
+</tbody>
+</table>
+</div>
+</section>

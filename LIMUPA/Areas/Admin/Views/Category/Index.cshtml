@@ -1,0 +1,120 @@
+﻿@model List<Category>
+
+    <div style="margin:20px 0">
+        <a asp-area="Admin" asp-controller="Category" asp-action="Create">
+            <button type="submit" class="btn btn-primary">New Category Create</button>
+        </a>
+        
+    </div>
+
+ <div>
+  <table class="table">
+  <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Names</th>
+        <th scope="col">Descriptions</th>
+        <th scope="col">CreateDates</th>
+        <th scope="col">Update</th>
+        <th scope="col">Images</th>
+        <th scope="col">Status</th>
+        <th scope="col">Operations</th>
+    </tr>
+   </thead>
+   <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+      <th scope="row">@item.Id</th>
+      <td>@item.Name</td>
+      <td>@item.Description</td>
+      <td>@item.CreateDate</td>
+      <td>@item.Update</td>
+      <td><img style="width:50px;" src="~/uploads/@item.Image" /></td>
+      <td>
+          
+         @if(@item.Status is true)
+          {
+              <span data-toggle="tooltip" data-placement="top" title="Aktivdir" > <i class="fa-solid fa-plus" style="color:green;"></i></span>
+             
+            
+          }
+          else
+          {
+               <span data-toggle="tooltip" data-placement="top" title="Aktivdeyil" >   <i  class="fa-solid fa-minus" style=" color:red;"></i>  </span>
+             
+             
+          }
+             
+       </td>
+       <td>
+           <a asp-area="Admin" asp-controller="Category" asp-action="Edit" asp-route-id=@item.Id style="margin:0 5px;"  title="Edit" ><i class="fa-solid fa-pen-to-square"></i></a>     
+           <a asp-action="Delete" asp-route-id=@item.Id class="delete" style="margin:0 5px;"  title="Delete"><i class="fa-solid fa-trash" ></i></a>
+        
+       
+           
+       </td>
+    </tr> 
+      }
+   
+   
+      </tbody>
+        </table>
+  </div>
+
+   @section Scripts{
+<script type="text/javascript">
+        $(document).ready(function () {
+            $(".delete").click(function (event) {
+                event.preventDefault();
+                var sweet = $(this);
+                swal({
+                    title: "Eminsiniz?",
+                    text: "Melumatlariniz Silinecek",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        $.get($(this).attr('href'), function (response) {
+                            swal("Poof! Your imaginary file has been deleted!", {
+                                icon: "success",
+                            }).then(function () {
+                                window.location.reload();
+                            });
+                        });
+                    } else {
+                        swal("Xeta bash verdi!");
+                    }
+                });
+            });
+        });
+
+//     $('.delete').click(function(e)
+//     {
+//         e.preventDefault()
+          
+
+//      Swal.fire({
+//      title: 'Are you sure?',
+//      text: "You won't be able to revert this!",
+//      icon: 'warning',
+//      showCancelButton: true,
+//      confirmButtonColor: '#3085d6',
+//      cancelButtonColor: '#d33',
+//      confirmButtonText: 'Yes, delete it!'
+//    }).then((result) => {
+//      if (result) {
+       
+//        Swal.fire(
+//          'Deleted!',
+//          'Your file has been deleted.',
+//          'success'
+//        )
+//  }
+//})
+//     });
+       
+ </script>
+ }
+ 

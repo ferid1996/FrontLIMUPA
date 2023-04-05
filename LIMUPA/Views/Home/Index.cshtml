@@ -1,0 +1,309 @@
+﻿@model LIMUPA.ViewModel.IndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!-- Begin Slider With Banner Area -->
+@await Component.InvokeAsync("Slider");
+@* <partial name="_Slide"/>*@
+<!-- Slider With Banner Area End Here -->
+<!-- Begin Product Area -->
+@{
+    int x = 1;
+}
+<div class="product-area pt-60 pb-50">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-lg-12">
+
+
+                <div class="li-product-tab">
+                    <ul class="nav li-product-menu">
+
+                        @*  @foreach (var item in Model.BestSellerCategories)
+                            {
+                            <li><a href="#x@x" class="" data-toggle="tab" target="_blank" asp-controller="Category" asp-action="Products"><span>@item.Name</span></a></li>
+                            x++;
+                            }*@
+
+                        <li><a id="newproducts" class="active" data-toggle="tab" href="#li-new-product"><span>New products</span></a></li>
+                        <li><a id="bestsellerproducts" data-toggle="tab" href="#li-bestseller-product"><span>Bestseller products</span></a></li>
+                        @*  <li><a data-toggle="tab" href="#li-featured-product"><span>Featured Products</span></a></li>*@
+
+                    </ul>
+                </div>
+                <!-- Begin Li's Tab Menu Content Area -->
+            </div>
+        </div>
+        <div class="tab-content">
+
+
+
+            <div id="" class="tab-pane active show" role="tabpanel">
+                <div class="row">
+                    <div class="product-active owl-carousel">
+
+                        @foreach (var item in Model.Products)
+                        {
+                            <div class="col-lg-12">
+                                <!-- single-product-wrap start -->
+                            <div style="max-height: 285px;" class="single-product-wrap">
+                                    <div class="product-image">
+                                        <a target="_blank" asp-controller="Category" asp-action="Products" asp-route-id="@item.Id">
+                                            <img src="~/uploads/@item.Image" alt="Li's Product Image">
+                                        </a>
+                                        @if (item.CreateDate.AddDays(7) > DateTime.Now)
+                                        {
+                                            <span class="sticker">New</span>
+                                        }
+
+                                    </div>
+                                    <div class="product_desc">
+                                        <div class="product_desc_info">
+                                            @*<div class="product-review">
+                                                <h5 class="manufacturer">
+                                                <a target="_blank" asp-controller="Category" asp-action="Products" asp-route-id="@item.Id">Graphic Corner</a>
+                                                </h5>
+                                                <div class="rating-box">
+                                                <ul class="rating">
+                                                <li><i class="fa fa-star-o"></i></li>
+                                                <li><i class="fa fa-star-o"></i></li>
+                                                <li><i class="fa fa-star-o"></i></li>
+                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                </ul>
+                                                </div>
+                                                </div>*@
+                                            <h4><a class="product_name" href="single-product.html">@item.Name</a></h4>
+                                            @*<div class="price-box">
+                                                <span class="new-price">@item.Price</span>
+                                                </div>*@
+                                        </div>
+                                        @* <div class="add-actions">
+                                            <ul class="add-actions-link">
+                                            <li class="add-cart active"><a href="#">Add to cart</a></li>
+                                            <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
+                                            <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                            </ul>
+                                            </div>*@
+                                    </div>
+                                </div>
+                                <!-- single-product-wrap end -->
+                        </div>
+                        }
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+<!-- Product Area End Here -->
+<!-- Begin Li's Static Banner Area -->
+<!-- Li's Static Banner Area End Here -->
+<!-- Begin Li's TV & Audio Product Area -->
+<section class="product-area li-laptop-product li-tv-audio-product pb-45">
+    <div class="container">
+        <div class="row">
+            <!-- Begin Li's Section Area -->
+            <div class="col-lg-12">
+                <div class="li-section-title">
+                    <h2>
+                        <a asp-controller="Product" asp-action="ProductList">
+                            <span>Products</span>
+                        </a>
+
+                    </h2>
+
+                </div>
+                <div class="row">
+                    <div class="product-active owl-carousel">
+
+                        @foreach (var item in Model.Products)
+                        {
+                            <div class="col-lg-12">
+                                <!-- single-product-wrap start -->
+                            <div class="single-product-wrap">
+                                    <div class="product-image">
+                                        <a target="_blank" asp-controller="Product" asp-action="ProductList" asp-route-id="@item.Id">
+                                            <img src="~/uploads/@item.Image" alt="Li's Product Image">
+                                        </a>
+                                        @if (item.CreateDate.AddDays(7) > DateTime.Now)
+                                        {
+                                            <span class="sticker">New</span>
+                                        }
+
+                                    </div>
+                                    <div class="product_desc">
+                                        <div class="product_desc_info">
+                                            <div class="product-review">
+                                                <h5 class="manufacturer">
+                                                    <a href="shop-left-sidebar.html">Graphic Corner</a>
+                                                </h5>
+                                                <div class="rating-box">
+                                                    <ul class="rating">
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                        <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <h4><a class="product_name" target="_blank" asp-controller="Product" asp-action="ProductList" asp-route-id="@item.Id">@item.Name</a></h4>
+                                            <div class="price-box">
+                                                <span class="new-price">$@item.Price</span>
+                                            </div>
+                                        </div>
+                                        <div class="add-actions">
+                                            <ul class="add-actions-link">
+                                                <li class="add-cart active"><a href="#">Add to cart</a></li>
+                                                <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
+                                                <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single-product-wrap end -->
+                        </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Section Area End Here -->
+        </div>
+    </div>
+</section>
+<!-- Li's TV & Audio Product Area End Here -->
+<!-- Blogs Area -->
+<section class="product-area li-laptop-product pt-60 pb-45">
+    <div class="container">
+        <div class="row">
+            <!-- Begin Li's Section Area -->
+            <div class="col-lg-12">
+                <div class="li-section-title">
+                    <h2>
+                        <span>BLogs</span>
+                    </h2>
+
+                </div>
+                <div class="row">
+                    <div class="product-active owl-carousel">
+                        @foreach (var item in Model.Blogs)
+                        {
+                            <div class="col-lg-12">
+                                <!-- single-product-wrap start -->
+                            <div class="li-blog-single-item pb-25">
+                                    <div class="li-blog-banner">
+                                        <a target="_blank" asp-controller="Blog" asp-action="Blogdetail" asp-route-id="@item.Id"><img class="img-full" src="~/uploads/@item.Image" alt=""></a>
+                                    </div>
+                                    <div class="li-blog-content">
+                                        <div class="li-blog-details">
+                                            <h3 class="li-blog-heading pt-25"><a target="_blank" asp-controller="Blog" asp-action="Blogdetail" asp-route-id="@item.Id">@item.Title</a></h3>
+                                            <div class="li-blog-meta">
+                                                <a class="author"><i class="fa fa-user"></i>Admin</a>
+
+                                                <a class="post-time" target="_blank" asp-controller="Blog" asp-action="Blogdetail" asp-route-id="@item.Id"><i class="fa fa-calendar"></i> @item.CreateDate</a>
+                                            </div>
+                                            <a class="read-more" target="_blank" asp-controller="Blog" asp-action="Blogdetail" asp-route-id="@item.Id">Read More...</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single-product-wrap end -->
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Section Area End Here -->
+        </div>
+    </div>
+</section>
+<!-- Blogs Area End Here -->
+@section HomeIndex{
+
+<script>
+       $(document).ready(function(){
+         $("#newproducts").click(function(){
+
+
+
+
+      
+        $.get("/home/newproductindexjson/", function (data) {
+
+
+
+            var str = "<div class="col-lg-12">
+                                <!-- single-product-wrap start -->
+                            <div style="max-height: 285px;" class="single-product-wrap">
+                                    <div class="product-image">
+                                        <a target="_blank" asp-controller="Category" asp-action="Products" asp-route-id="item.Id">
+                                            <img src="~/uploads/item.Image" alt="Li's Product Image">
+                                        </a>
+
+                                      <span class="sticker">New</span>
+
+                                    </div>
+                                    <div class="product_desc">
+                                        <div class="product_desc_info">
+
+                                            <h4><a class="product_name" href="single-product.html">item.Name</a></h4>
+
+                                    </div>
+                                </div>
+
+                        </div>"
+            for (let i = 0; i < data.length; i++) {
+                //str += `<option value="${data[i].id}">${data[i].name}</option>`
+                str +=`<div class="col-lg-12">
+                                <!-- single-product-wrap start -->
+                            <div style="max-height: 285px;" class="single-product-wrap">
+                                    <div class="product-image">
+                                        <a target="_blank" asp-controller="Category" asp-action="Products" asp-route-id="${data[i].Id}">
+                                            <img src="~/uploads/${data[i].Image}" alt="Li's Product Image">
+                                        </a>`+
+
+                                       if (data[i].CreateDate.AddDays(7) > DateTime.Now)
+                                        {
+                                           +"<span class="sticker">New</span>"+
+                                        }
+
+                                   +` </div>
+                                    <div class="product_desc">
+                                        <div class="product_desc_info">
+
+                                            <h4><a class="product_name" href="single-product.html">${data[i].Name}</a></h4>
+
+                                    </div>
+                                </div>
+
+                        </div>`
+            }
+            $('.owl-carousel').append(str)
+            console.log("ddddddddddddddddddddddddd");
+        })
+
+    });
+
+        });
+           });
+
+
+</script>
+}
+

@@ -1,0 +1,88 @@
+﻿@model LIMUPA.ViewModel.ContactViewModel
+@{
+    ViewData["Title"] = "contact"; 
+}
+
+   <!-- Begin Contact Main Page Area -->
+            <div class="contact-main-page mt-60 mb-40 mb-md-40 mb-sm-40 mb-xs-40">
+               
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 offset-lg-1 col-md-12 order-1 order-lg-2">
+                            <div class="contact-page-side-content">
+                                <h3 class="contact-page-title">Contact Us</h3>
+                                <p class="contact-page-message mb-25">@Model.Contacts.Text</p>
+                                <div class="single-contact-block">
+                                    <h4><i class="fa fa-fax"></i> Address</h4>
+                                    <p>@Model.Contacts.Address</p>
+                                </div>
+                                <div class="single-contact-block">
+                                    <h4><i class="fa fa-phone"></i> Phone</h4>
+                                    <p>Mobile: @Model.Contacts.Phone</p>
+                                    
+                                </div>
+                                <div class="single-contact-block last-child">
+                                    <h4><i class="fa fa-envelope-o"></i> Email</h4>
+                                    <p>@Model.Contacts.Email</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 order-2 order-lg-1">
+                            <div class="contact-form-content pt-sm-55 pt-xs-55">
+                                <h3 class="contact-page-title">Tell Us Your Message</h3>
+                                <div class="contact-form">
+                                    <form asp-controller="Contact" asp-action="contactform" method="post">
+                                        <div class="form-group">
+                                            <label for="customername">Your Name <span class="required">*</span></label>
+                                            <input type="text" name="customerName" id="customername" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="customerEmail">Your Email <span class="required">*</span></label>
+                                            <input type="email" name="customerEmail" id="customerEmail" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contactSubject">Subject</label>
+                                            <input type="text" name="contactSubject" id="contactSubject">
+                                        </div>
+                                        <div class="form-group mb-30">
+                                            <label for="contactMessage">Your Message</label>
+                                            <textarea name="contactMessage" id="contactMessage" ></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" value="submit" id="submit1" class="li-btn-3" name="submit">Send</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <p class="form-messege"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Contact Main Page Area End Here -->
+
+         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
+              <script>
+            $("#submit1").click(function(){
+
+                swal({
+                          title: "Good job!",
+                          text: "You clicked the button!",
+                          icon: "success",
+                        });
+                                              
+               else()
+               {
+                   swal({
+                          title: "Attention",
+                          text: "Fields Empty!",
+                          icon: "warning",
+                        });
+               }                  
+                           
+
+               
+            });  
+            </script>    

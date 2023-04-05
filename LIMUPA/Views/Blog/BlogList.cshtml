@@ -1,0 +1,65 @@
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "Blog";
+}
+
+  @await Component.InvokeAsync("Slider");
+    <!-- Begin Li's Main Blog Page Area -->
+            <div class="li-main-blog-page pt-60 pb-55">
+                <div class="container">
+                    <div class="row">
+                        <!-- Begin Li's Blog Sidebar Area -->
+                        
+                        <!-- Li's Blog Sidebar Area End Here -->
+                        <!-- Begin Li's Main Content Area -->
+                        <div class="col-lg-9 order-lg-2 order-1">
+                            <div class="row li-main-content">
+                                @foreach (var item in Model)
+                                {
+                                     <div class="col-lg-6 col-md-6">
+                                    <div class="li-blog-single-item pb-25">
+                                        <div class="li-blog-banner">
+                                            <a target="_blank" asp-controller="Blog" asp-action="Blogdetail"  asp-route-id="@item.Id"><img class="img-full" src="~/uploads/@item.Image" alt=""></a>
+                                        </div>
+                                        <div class="li-blog-content">
+                                            <div class="li-blog-details">
+                                                <h3 class="li-blog-heading pt-25"><a target="_blank" asp-controller="Blog" asp-action="Blogdetail"  asp-route-id="@item.Id">@item.Title</a></h3>
+                                                <div class="li-blog-meta">
+                                                    <a class="author" href="#"><i class="fa fa-user"></i>Admin</a>
+                                                    
+                                                    <a class="post-time" href="#"><i class="fa fa-calendar"></i>@item.CreateDate</a>
+                                                </div>
+                                               
+                                                <a class="read-more" target="_blank" asp-controller="Blog" asp-action="Blogdetail"  asp-route-id="@item.Id">Read More...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+
+                               
+                             
+                                <!-- Begin Li's Pagination Area -->
+                                <div class="col-lg-12">
+                                    <div class="li-paginatoin-area text-center pt-25">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <ul class="li-pagination-box">
+                                                    <li><a class="Previous" href="#">Previous</a></li>
+                                                    <li class="active"><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a class="Next" href="#">Next</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Li's Pagination End Here Area -->
+                            </div>
+                        </div>
+                        <!-- Li's Main Content Area End Here -->
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Main Blog Page Area End Here -->

@@ -1,0 +1,78 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "Users";
+    Pager pager = new Pager();
+    int pageNo = 0;
+    if(ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+   <h1>USERS</h1>
+    <section>
+        <div class="width:100px;">
+            
+            <label class="inline">Search</label>
+            <input type="text" class="form-control" id="usersearch" />          
+           
+        </div>
+       <div>
+           <partial name="_partialpagination" model="@pager" />
+  <table class="table" >
+  <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Names</th>
+        <th scope="col">E-mail</th>
+       
+        <th scope="col">Status</th>
+    </tr>
+   </thead>
+   <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+              <th scope="row">@item.Id</th>
+              <td  >@item.Username</td>
+              <td>@item.Email</td>
+              @if (item.UserTypeId == 2)
+               {
+                <td style="color:green;">Admin</td>
+               }
+               else
+              {
+               <td>Istifadeci</td>
+              }                 
+               </tr>
+        }
+        </tbody>
+        </table>
+       <partial name="_partialpagination" model="@pager" />
+   </div>
+</section>
+@*@section scripts{
+    <script type="text/javascript">
+    $(()=>{
+        getUsers();
+        $('#usersearch').on('keyup',()=>{
+             getUsers();
+        });
+    });
+    function getUsers(){
+       $.ajax({
+           url:'@Url.Action("SearchUsers","Home")',
+           datatype:'html',
+           method:'Get',
+           data:{textuser: $('#usersearch').val()},
+           success: function (res){
+               $('#partialusers').html('').html(res);
+           },
+           error:function (err){
+               console.log(err);
+           }
+    }
+</script>
+}
+*@
